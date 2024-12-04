@@ -15,8 +15,9 @@ app.set('views', './views');
 //Serve the defination file
 app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 app.use('/', authRoutes);
-
 
 //Connect to MongoDB
 mongoose.connect(uri).then(
